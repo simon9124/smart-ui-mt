@@ -9,6 +9,7 @@ import 'mint-ui/lib/style.css'
 Vue.config.productionTip = false
 
 Vue.use(MintUI)
+require('promise.prototype.finally').shim() // promise.prototype.finally
 
 /* eslint-disable no-new */
 new Vue({

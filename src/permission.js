@@ -1,8 +1,8 @@
 import router from './router'
 import store from './store'
-import {
-  Message
-} from 'element-ui'
+// import {
+//   Message
+// } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import {
@@ -52,7 +52,12 @@ router.beforeEach((to, from, next) => {
           })
           .catch(() => {
             store.dispatch('FedLogOut').then(() => {
-              Message.error('无法获取用户信息，请重新登录')
+              // Message.error('无法获取用户信息，请重新登录')
+              Toast({
+                message: '无法获取用户信息，请重新登录',
+                position: 'middle',
+                duration: 5000
+              })
               next({
                 path: '/login'
               })
