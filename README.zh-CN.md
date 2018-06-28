@@ -57,7 +57,23 @@
 
 ### 5.技术难点
 
-- 路由懒加载
+- 路由懒加载[参考文档](https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/lazy-loading.html#新方案)
+
+```
+使用babel 的 babel-plugin-dynamic-import-node：
+1.在package.json中增加BABEL_ENV
+  "scripts": {
+    "dev": "cross-env BABEL_ENV=development webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    ...
+  },
+2.在.babelrc中加入babel-plugin-dynamic-import-node，让只有在development模式生效
+  "env": {
+    "development": {
+      "plugins": ["dynamic-import-node"]
+    }
+  }
+```
+
 - 路由守卫
 - 登录后 cookie 存储 token
 - 登录后，获取用户信息
