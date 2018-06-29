@@ -1,6 +1,10 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
-import { getToken } from '@/utils/auth'
+import {
+  Message
+} from 'element-ui'
+import {
+  getToken
+} from '@/utils/auth'
 import {
   customMessage,
   commonMessage,
@@ -90,4 +94,6 @@ service.interceptors.response.use(
   }
 )
 
-export { service as request }
+export {
+  service as request
+}
