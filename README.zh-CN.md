@@ -47,17 +47,20 @@
 ### 4.项目依赖（若从 0 搭建）
 
 - npm install mint-ui -S
+- npm install element-ui -S
 - npm install vuex -S
 - npm install --save nprogress
 - npm install js-cookie -S
 - npm i mint-ui -S
 - npm install axios -S
 - npm i promise.prototype.finally -S
-- npm install node-sass --save-dev npm install sass-loader --save-dev
+- npm install node-sass --save-dev npm install sass-loader --save-dev（style 用）
+- npm install sass-loader --save npm install node-sass --save（路由用）
+- npm install --save-dev cross-env
 
 ### 5.技术难点
 
-- 路由懒加载[参考文档](https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/lazy-loading.html#新方案)
+- 路由懒加载 [参考文档](https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/lazy-loading.html#新方案)
 
 ```
 使用babel 的 babel-plugin-dynamic-import-node：

@@ -1,6 +1,34 @@
 <template>
   <div class="login-container">
-    123
+    <h2 class="title">系统登录</h2>
+    <el-form autoComplete="on"
+             :model="loginForm"
+             :rules="loginRules"
+             ref="loginForm">
+      <el-form-item prop="userName">
+        <mt-field placeholder="用户名："
+                  type="text"
+                  v-model="loginForm.userName"
+                  name="userName"
+                  autoComplete="on"></mt-field>
+      </el-form-item>
+      <el-form-item prop="userPassword">
+        <mt-field placeholder="密码："
+                  :type="passwordType"
+                  v-model="loginForm.userPassword"
+                  name="userPassword"
+                  autoComplete="on">
+          <mt-button @click.native="showPwd">
+            <i class="iconfont icon-close-eyes">
+            </i>
+          </mt-button>
+        </mt-field>
+      </el-form-item>
+    </el-form>
+    <mt-button type="primary"
+               size="large"
+               @click.native="handleLogin">登 录</mt-button>
+
     <!-- <el-form class="login-form"
              autoComplete="on"
              :model="loginForm"
@@ -79,11 +107,12 @@ export default {
         ]
       },
       passwordType: 'password',
-      loading: false,
+      // loading: false,
       showDialog: false
     }
   },
   methods: {
+    // 切换密码显示
     showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -94,15 +123,16 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true
+          // this.loading = true
           this.$store
             .dispatch('LoginByUsername', this.loginForm)
             .then(() => {
-              this.loading = false
+              console.log('111')
+              // this.loading = false
               this.$router.push({ path: '/' })
             })
             .catch(() => {
-              this.loading = false
+              // this.loading = false
             })
         } else {
           // console.log('error submit!!')
