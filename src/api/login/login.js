@@ -1,4 +1,6 @@
-import { request } from '@/utils/request'
+import {
+  request
+} from '@/utils/request'
 
 export function loginByUsername(userName, userPassword) {
   const param = new URLSearchParams()
