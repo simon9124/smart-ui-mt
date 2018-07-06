@@ -3,11 +3,13 @@
     <mt-button icon="more"
                slot="right"
                @click="show=!show"></mt-button>
-    <ul class="header-slot-dropdown"
-        v-if="show">
-      <li class="header-slot-dropdown-item">退出登录</li>
-      <li class="header-slot-dropdown-item">修改密码</li>
-    </ul>
+    <transition name="fade">
+      <ul class="header-slot-dropdown"
+          v-show="show">
+        <li class="header-slot-dropdown-item">退出登录</li>
+        <li class="header-slot-dropdown-item">修改密码</li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -46,5 +48,15 @@ export default {
       }
     }
   }
+}
+
+// 淡入淡出
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>
