@@ -17,6 +17,10 @@ Vue.use(ElementUI)
 
 import './permission' // permission control
 
+// 自定义的globle公共组件
+import globalUI from '@/components'
+Vue.use(globalUI)
+
 Vue.config.productionTip = false
 require('promise.prototype.finally').shim() // promise.prototype.finally
 

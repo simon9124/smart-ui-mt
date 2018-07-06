@@ -37,14 +37,6 @@ service.interceptors.request.use(
   }
 )
 
-// const service = axios.create({
-//   baseURL: process.env.BASE_API + process.env.PREFIX,
-//   timeout: 10000, // request timeout
-//   headers: {
-//     'token-header': 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjeW91cmFpIiwiand0X3VzZXJpZCI6ImJhMzQ4OTMyLTZmNDItMTFlOC04MzgwLTAwMTYzZTAwNGY3OSIsImp3dF9uYW1lIjoiIiwiZXhwIjoxNTMwODA1OTgyfQ.XGQFOjb4pjE_5Vl38-BDuton1NE4AbzWbU5X33D_eCCQ2N8ghXoPHFvokPEbDRJqM6MmvhY8yLmC5OieVbK_VYOkUzitly1EhYgKBX2f5Ge77wp49TZeYAhrgLfMmclPie-JgyWAoIcBvezb39tafPtZVzUCHODRp94ASZBsDfM'
-//   }
-// })
-
 /**
  * 回文拦截：
  * response.status = 200 请求到达 根据response.data.status 判断 success/waring

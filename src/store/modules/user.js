@@ -62,8 +62,6 @@ const user = {
       return new Promise((resolve, reject) => {
         loginByUsername(userName, userInfo.userPassword)
           .then(response => {
-            console.log('111')
-            console.log(response)
             // 登录成功缓存token-> cookie
             setToken(response.data.token)
             // 登录成功缓存token-> store

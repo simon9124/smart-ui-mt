@@ -18,10 +18,10 @@
                   v-model="loginForm.userPassword"
                   name="userPassword"
                   autoComplete="on">
-          <mt-button @click.native="showPwd">
+          <!-- <mt-button @click.native="showPwd">
             <i class="iconfont icon-close-eyes">
             </i>
-          </mt-button>
+          </mt-button> -->
         </mt-field>
       </el-form-item>
     </el-form>

@@ -3,20 +3,18 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-// import Layout from '../views/layout/Layout'
-
 // 静态路由（无需权限）
 export const constantRouterMap = [{
-    path: '/',
-    component: () =>
-      import ('@/components/HelloWorld')
-    // hidden: true
-  },
-  {
     path: '/login',
     component: () =>
       import ('@/views/login/login'),
     hidden: true
+  },
+  {
+    path: '/',
+    component: () =>
+      import ('@/views/layout/dashboard'),
+    name: 'dashboard',
   }
 ]
 
