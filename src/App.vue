@@ -1,13 +1,17 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <!-- <router-view/> -->
+    <DashBoard></DashBoard>
   </div>
 </template>
 
 <script>
+import DashBoard from '@/views/layout/dashboard'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: { DashBoard }
 }
 </script>
 

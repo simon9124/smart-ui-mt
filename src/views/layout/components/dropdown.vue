@@ -6,8 +6,13 @@
     <transition name="fade">
       <ul class="header-slot-dropdown"
           v-show="show">
-        <li class="header-slot-dropdown-item">退出登录</li>
-        <li class="header-slot-dropdown-item">修改密码</li>
+        <li class="header-slot-dropdown-item"
+            @click="handleLogout">
+          <i class="mint-toast-icon mintui mintui-back"></i>退出登录
+        </li>
+        <li class="header-slot-dropdown-item">
+          <i class="mint-toast-icon mintui mintui-back"></i>修改密码
+        </li>
       </ul>
     </transition>
   </div>
@@ -26,6 +31,12 @@ export default {
     }
   },
   methods: {
+    handleLogout () {
+      // 退出登录
+      this.$store.dispatch('LogOut').then(() => {
+        location.reload()
+      })
+    }
   }
 }
 </script>
@@ -42,9 +53,13 @@ export default {
     padding: 0;
     &-item {
       list-style: none;
-      padding: 10px 30px 10px 15px;
+      padding: 10px 20px 10px 15px;
       &:not(:first-child) {
         border-top: 1px solid #fff;
+      }
+      i {
+        display: inline-block;
+        margin-right: 5px;
       }
     }
   }

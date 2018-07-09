@@ -1,20 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/views/layout/home'
 
 Vue.use(Router)
 
 // 静态路由（无需权限）
-export const constantRouterMap = [{
+export const constantRouterMap = [
+  {
     path: '/login',
-    component: () =>
-      import ('@/views/login/login'),
+    component: () => import('@/views/login/login'),
     hidden: true
   },
   {
     path: '/',
-    component: () =>
-      import ('@/views/layout/dashboard'),
-    name: 'dashboard',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '*',
+    redirect: '/',
+    component: Home
   }
 ]
 
@@ -27,4 +32,32 @@ export default new Router({
 })
 
 // 动态路由（权限判断）
-export const asyncRouterMap = []
+export const asyncRouterMap = [
+  {
+    path: '/settings',
+    name: 'dict',
+    component: () => import('@/views/settings/dict'),
+    meta: {
+      title: 'settings',
+      roles: ['admin']
+    }
+  },
+  {
+    path: '/userManager',
+    name: 'user',
+    component: () => import('@/views/userManager/user'),
+    meta: {
+      title: 'userManager',
+      roles: ['admin']
+    }
+  },
+  {
+    path: '/tree',
+    name: 'tree',
+    component: () => import('@/views/tree/tree'),
+    meta: {
+      title: 'tree',
+      roles: ['admin']
+    }
+  }
+]

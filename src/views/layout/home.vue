@@ -1,16 +1,15 @@
 <template>
   <div class="container">
-    <MtHeader></MtHeader>
-    <router-view/>
+    <a href='#/settings'>settings</a><br>
+    <a href='#/userManager'>userManager</a><br>
+    <a href='#/tree'>tree</a><br>
   </div>
 </template>
 
 <script>
-import MtHeader from './header'
-
 export default {
   name: 'dashboard',
-  components: { MtHeader },
+  // components: { MtHeader },
   data () {
     return {
     }
