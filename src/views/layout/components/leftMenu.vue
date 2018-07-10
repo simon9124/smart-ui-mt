@@ -1,35 +1,43 @@
 <template>
   <div class="header-slot">
     <!-- 遮罩层 -->
-    <div v-show="show"
-         class='header-slot-mask'
-         @click='show=!show'
-         ref='cover'></div>
+    <transition name="fade">
+      <div v-show="show"
+           class='header-slot-mask'
+           @click='menuHide();show=!show'
+           ref='cover'>
+      </div>
+    </transition>
     <!-- 面包屑按钮 -->
     <mt-button slot="right"
-               @click="show=!show">
+               @click="menuShow();show=!show">
       <i class="icon iconfont icon-menu"></i>
     </mt-button>
     <!-- 菜单栏 -->
-    <transition name="fade">
-      <div>
-        <!-- <h3>SmartBCM 业务连续性管理系统</h3> -->
-        <ul class="header-slot-leftmenu"
-            v-show="show">
-          <a class="header-slot-leftmenu-item"
-             href='#/'>首页</a>
-          <a class="header-slot-leftmenu-item"
-             href='#/settings'>系统设置</a>
-          <a class="header-slot-leftmenu-item"
-             href='#/userManager'>用户管理</a>
-          <a class="header-slot-leftmenu-item"
-             href='#/tree'>树形结构</a>
-          <a class="header-slot-leftmenu-item">智能图表</a>
-          <a class="header-slot-leftmenu-item">功能组件</a>
-          <a class="header-slot-leftmenu-item">动态皮肤</a>
-        </ul>
-      </div>
-    </transition>
+    <ul ref="leftmenu"
+        class="header-slot-leftmenu"
+        @click="menuHide();show=!show">
+      <h3 class="header-slot-leftmenu-title">SmartBCM</h3>
+      <h5 class="header-slot-leftmenu-title">业务连续性管理系统</h5>
+      <a class="header-slot-leftmenu-item"
+         href='#/'>
+        <i class="icon iconfont icon-all"></i>首页</a>
+      <a class="header-slot-leftmenu-item"
+         href='#/settings'>
+        <i class="icon iconfont icon-set"></i>系统设置</a>
+      <a class="header-slot-leftmenu-item"
+         href='#/userManager'>
+        <i class="icon iconfont icon-account"></i>用户管理</a>
+      <a class="header-slot-leftmenu-item"
+         href='#/tree'>
+        <i class="icon iconfont icon-agriculture"></i>树形结构</a>
+      <a class="header-slot-leftmenu-item">
+        <i class="icon iconfont icon-data"></i>智能图表</a>
+      <a class="header-slot-leftmenu-item">
+        <i class="icon iconfont icon-box"></i>功能组件</a>
+      <a class="header-slot-leftmenu-item">
+        <i class="icon iconfont icon-color"></i>动态皮肤</a>
+    </ul>
   </div>
 </template>
 
@@ -42,10 +50,21 @@ export default {
   },
   data () {
     return {
-      show: false
+      // 控制菜单及遮罩层显示与否
+      show: false,
     }
   },
   methods: {
+    menuShow () {
+      // 菜单显示
+      const leftMenu = this.$refs.leftmenu
+      leftMenu.style.left = '0'
+    },
+    menuHide () {
+      // 菜单隐藏
+      const leftMenu = this.$refs.leftmenu
+      leftMenu.style.left = '-200px'
+    }
   }
 }
 </script>
@@ -64,20 +83,36 @@ export default {
     z-index: 1111;
   }
   &-leftmenu {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background: #2e3238;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -200px;
     margin: 0;
-    padding: 0;
+    padding: 15px 0;
+    min-width: 200px;
+    background: black;
+    z-index: 1200;
+    transition: all ease 0.4s;
+    overflow: auto;
+    font-size: 16px;
+    &-title {
+      margin: 0;
+      padding: 5px 10px;
+      color: gray;
+      &:not(:first-child) {
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+    }
     &-item {
       display: block;
       color: #fff;
       text-decoration: none;
-      // list-style: none;
-      padding: 10px 30px 10px 15px;
-      &:not(:first-child) {
-        border-top: 1px solid #fff;
+      padding: 15px 10px;
+      font-size: 0.9rem;
+      .icon {
+        font-size: 0.9rem;
+        margin-right: 5px;
       }
     }
   }
